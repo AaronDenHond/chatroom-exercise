@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
 
     <!--need to enable socket connection on client side too!-->
   </head>
-  <body></body>
+  <body>
+    <input type="text" name="message" id="message" />
+    <button type="submit">Send Me</button>
+    <button type="submit" id="sendToAll">Send All</button>
+    <div class="displayMessage" id="displayMessage"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js" defer></script>
+  </body>
 </html>

@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const port = 9001;
+let counter = 0;
 
 //SOCKETS : 2 way connection between client and server
 /*how to refresh data? for example leaderboard updates in online multiplayer game.
@@ -11,16 +12,25 @@ updated data. */
 const app = express();
 const clientPath = `${__dirname}/../client`;
 app.use(express.static(clientPath));
+
+//we need to create an http server
 const server = http.createServer(app);
+
+const io = require("socket.io")(server);
+/*const io is entry point of all sockets connected to the server. Here we are importing socket.io, which is a function that
+takes our server as an argument */
+
+//connection from the client on the frontend
+io.on("connection", (socket) => {
+  console.log(counter + "someone connected");
+  //after this code runs we increment so we can more easily see howmany peeps join.
+  counter += 1;
+  //server has to react to the emit from the client side
+  socket.on("sendToAll", (message) => {
+    io.emit("displayMessage", message);
+  });
+});
 
 server.listen(port, () => {
   console.log("server running on " + port);
-});
-
-const io = require("socket.io")(server);
-//const io is entry point of all sockets connected to the server
-
-//connection from the client
-io.on("connection", (socket) => {
-  console.log("someone connected");
 });
