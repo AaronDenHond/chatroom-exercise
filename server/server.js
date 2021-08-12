@@ -22,13 +22,14 @@ server.listen(port, () => {
 
 /**
  * TODO : What is listening to a port exactly?
- * TODO : What is the .on exactly?
+ * A server is a process that has to run on a port. We have to tell it what part to run on, to 'listen' to if a request happens.
  *
  */
 
 const io = require("socket.io")(server);
 /*const io is entry point of all sockets connected to the server. Here we are importing socket.io, which is a function that
 takes our server as an argument */
+//io is de library socket.io but he also knows about server, ports etc.. server is our node server.
 
 //connection from the client on the frontend to the server
 io.on("connection", (socket) => {
@@ -36,6 +37,10 @@ io.on("connection", (socket) => {
   //after this code runs we increment so we can more easily see howmany peeps join.
   counter += 1;
   //server has to react to the emit from the client side
+
+  //on initial pageload shows this message to the user. if we'd do io.emit it shows to everyone.
+  socket.emit("displayMessage", "Welcome to the chat :)");
+
   socket.on("sendToAll", (message) => {
     io.emit("displayMessage", message);
   });
@@ -43,4 +48,15 @@ io.on("connection", (socket) => {
   socket.on("sendToMe", (message) => {
     socket.emit("displayMessage", message);
   });
+
+  socket.broadcast.emit("displayMessage", "A user has connected");
+  //first arg is where, second arg is what to display.
+
+  //message to all on disconnect of a user.
+  socket.on("disconnect", function () {
+    io.emit("displayMessage", "A user has disconnected :/");
+  });
 });
+
+//sockets zijn kanalen op 1 poort. We luisteren op 1 poort, en creeeren meerdere sockets op 1 poort.
+//Send to me is maar over 1 socket, dus alleen die gebruiker krijgt de message.
