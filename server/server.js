@@ -33,6 +33,7 @@ takes our server as an argument */
 
 //connection from the client on the frontend to the server
 io.on("connection", (socket) => {
+  let name = socket.id;
   console.log(counter + "someone connected");
   //after this code runs we increment so we can more easily see howmany peeps join.
   counter += 1;
@@ -49,14 +50,17 @@ io.on("connection", (socket) => {
     socket.emit("displayMessage", message);
   });
 
-  socket.broadcast.emit("displayMessage", "A user has connected");
+  socket.broadcast.emit("displayMessage", `user ${name} has connected`);
   //first arg is where, second arg is what to display.
 
   //message to all on disconnect of a user.
+
   socket.on("disconnect", function () {
-    io.emit("displayMessage", "A user has disconnected :/");
+    io.emit("displayMessage", `user ${name} has disconnected :/`);
   });
 });
 
 //sockets zijn kanalen op 1 poort. We luisteren op 1 poort, en creeeren meerdere sockets op 1 poort.
 //Send to me is maar over 1 socket, dus alleen die gebruiker krijgt de message.
+
+//connect,disconnect and message are built-in reserved socket.io events.
