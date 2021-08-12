@@ -12,4 +12,4 @@ ISSUE 1 : the console.logging happens in the terminal on the server side! don't 
 ISSUE 2 : Move script.js under /socket.io in the <scripts> addition to the headers. Otherwise it loads 
 the client side js before the sockets are loaded. Defer didnt work for some reason, had to move.
 
-Current status : can see someone connect in the server side terminal on page reload
+Current status : can see someone connect in the server side terminal on page reload.
