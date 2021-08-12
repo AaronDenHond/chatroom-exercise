@@ -15,8 +15,14 @@ buttonMe.addEventListener("click", function () {
   socket.emit("sendToMe", message);
 });
 
+//is this the msg back from server?
 socket.on("displayMessage", (message) => {
   target = document.getElementById("displayMessage");
-  target.innerText += message;
-  target.innerHTML += "<br>";
+  messageTarget = document.createElement("div");
+  messageTarget.classList.add("message");
+  messageTarget.innerText += message;
+  target.appendChild(messageTarget);
+
+  /*  target.innerText += message;
+  target.innerHTML += "<br>"; */
 });
