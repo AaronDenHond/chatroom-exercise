@@ -12,19 +12,22 @@
 </head>
 
 <body>
-  <div class="header">
-    <h3>Scuffed MSN</h3>
-    <p>The one mom told you about when she said there's MSN at home.</p>
-  </div>
-  <div class="container">
 
+  <div class="container">
+    <header class="header">
+      <h3>Scuffed MSN</h3>
+      <p>The one mom told you about when she said there's MSN at home.</p>
+    </header>
     <input type="text" name="message" id="message" placeholder="Chat here!" />
     <button type="submit" id="sendToMe">Send Me</button>
     <button type="submit" id="sendToAll">Send All</button>
     <div class="displayMessage" id="displayMessage"></div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js" defer></script>
+    <footer class="footer">
+      <h5>All rights reserved. Intellectual Property theft is not a joke, Jim.</h5>
+    </footer>
   </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>

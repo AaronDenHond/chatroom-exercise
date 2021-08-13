@@ -1,5 +1,5 @@
 * {
-    font-family: papyrus;
+  font-family: papyrus;
 }
 
 .container {
@@ -7,31 +7,43 @@
   width: 60%;
   height: auto;
   /* text-align: center; */
-  margin:auto;
+  margin: auto;
+}
+
+.displayMessage {
   padding-left: 20px;
-  
-  
 }
 
 .header {
-    padding: 60px;
-    text-align: center;
-    background: #3385ff;
-    color: white;
-    font-size: 30px;
-    width: 810px;
-    margin: auto;
-    height: auto;
-    
-  }
+  padding: 60px;
+  text-align: center;
+  background: #3385ff;
+  color: white;
+  font-size: 30px;
+  
+  margin: auto;
+  height: auto;
+}
+
+.footer {
+  text-align: center;
+  background: #3385ff;
+  color: white;
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+
+}
 
 #message {
   margin-bottom: 30px;
   margin-top: 20px;
+  margin-left: 20px;
 }
 
 .message {
   padding-bottom: 14px;
   border-bottom: black dashed 1px;
   padding-top: 14px;
+  
 }
