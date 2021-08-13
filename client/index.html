@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
 
-    <!--need to enable socket connection on client side too!-->
-  </head>
-  <body>
-    <input type="text" name="message" id="message" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!--need to enable socket connection on client side too!-->
+</head>
+
+<body>
+  <div class="header">
+    <h3>Scuffed MSN</h3>
+    <p>The one mom told you about when she said there's MSN at home.</p>
+  </div>
+  <div class="container">
+
+    <input type="text" name="message" id="message" placeholder="Chat here!" />
     <button type="submit" id="sendToMe">Send Me</button>
     <button type="submit" id="sendToAll">Send All</button>
     <div class="displayMessage" id="displayMessage"></div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js" defer></script>
-  </body>
+  </div>
+</body>
+
 </html>
